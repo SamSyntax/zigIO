@@ -104,18 +104,18 @@
 
         /// Returns true if the codepoint is part of a Unicode emoji block, flase otherwise.
         /// This checks against major emoji ranges 
-        pub inline fn isEmote(cp: u21) bool {
+        pub inline fn isEmote(cp: usize) bool {
             return switch(cp) {
-                0x1F600...0x1F64F => true, // Emoticons
-                0x1F300...0x1F5FF => true, // Miscellaneous Symbols and Pictographs
-                0x1F680...0x1F6FF => true, // Transport and Map Symbols
-                0x1F780...0x1F7FF => true, // Geometric Shapes Extended
-                0x1F900...0x1F9FF => true, // Supplemental Symbols and Pictographs
-                0x1FA70...0x1FAFF => true, // Symbols and Pictographs Extended-A
-                0x2600...0x26FF   => true, // Miscellaneous Symbols
-                0x2700...0x27BF   => true, // Dingbats
-                0x1F100...0x1F1FF => true, // Enclosed Alphanumeric Supplement (Regional Indicators)
-                0x1F200...0x1F2FF => true,
+                0x1F600...0x1F64F => true,  // Emoticons
+                0x1F300...0x1F5FF => true,  // Miscellaneous Symbols and Pictographs
+                0x1F680...0x1F6FF => true,  // Transport and Map Symbols
+                0x1F780...0x1F7FF => true,  // Geometric Shapes Extended
+                0x1F900...0x1F9FF => true,  // Supplemental Symbols and Pictographs
+                0x1FA70...0x1FAFF => true,  // Symbols and Pictographs Extended-A
+                0x1F100...0x1F1FF => true,  // Enclosed Alphanumeric Supplement (Regional Indicators)
+                0x1F200...0x1F2FF => true,  // Enclosed Ideographic Supplement
+                0x2600...0x26FF   => true,  // Miscellaneous Symbols
+                0x2700...0x27BF   => true,  // Dingbats
                 else              => false,
             };
         }
