@@ -78,6 +78,24 @@
             try testing.expectEqual(@as(u3, 0), utf8.getFirstByteLength(0xF8));
         }
 
+        test "utf8.isEmote" {
+            try testing.expect(utf8.isEmote(0x1F600)); // 😀 (Emoticons)
+            try testing.expect(utf8.isEmote(0x1F300)); // 🌀 (Misc Symbols)
+            try testing.expect(utf8.isEmote(0x1F680)); // 🚀 (Transport)
+            try testing.expect(utf8.isEmote(0x1F780)); // 🞀 (Geometric)
+            try testing.expect(utf8.isEmote(0x1F900)); // 🤀 (Supplemental)
+            try testing.expect(utf8.isEmote(0x1FA70)); // 🩰 (Extended-A)
+            try testing.expect(utf8.isEmote(0x2600));  // ☀ (Misc Symbols)
+            try testing.expect(utf8.isEmote(0x2700));  // ✀ (Dingbats)
+            try testing.expect(utf8.isEmote(0x1F1E6)); // 🇦 (Regional Indicator)
+            try testing.expect(utf8.isEmote(0x1F200)); // 🈀 (Enclosed Ideographic)
+            try testing.expect(!utf8.isEmote('A'));     // ASCII letter
+            try testing.expect(!utf8.isEmote(0x00A9)); // © (Latin-1)
+            try testing.expect(!utf8.isEmote(0x20AC));  // € (Currency)
+            try testing.expect(!utf8.isEmote('3'));     // Number
+            try testing.expect(!utf8.isEmote(0x110000)); // Invalid codepoint
+        }
+
     // └──────────────────────────────────────────────────────────────┘
 
 // ╚══════════════════════════════════════════════════════════════════════════════════╝
